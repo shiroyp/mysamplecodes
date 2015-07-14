@@ -8,7 +8,7 @@
   /* Configuration endpoint to use to initialize memcached client. 
      This is only an example. */
 //  $server_endpoint = "php-autodiscovery.1zvgtq.cfg.use1.cache.amazonaws.com";
-  $server_endpoint = "sdrsd.2eh3hf.cfg.euw1.cache.amazonaws.com";
+  $server_endpoint = "autodiscovery-endpoint.cfg.euw1.cache.amazonaws.com";
 
   /* Port for connecting to the ElastiCache cluster. 
      This is only an example */
