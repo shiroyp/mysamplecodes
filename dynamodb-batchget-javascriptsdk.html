@@ -34,6 +34,25 @@ dynamodb.batchGetItem(params, function(err, data) {
     if (err) console.log(err, err.stack); // an error occurred
     else {
     console.log(JSON.stringify(data)); //  console.log("table items are:");
+    /*
+	my_table_items = data.Responses['TABLENAME'];
+	for (i in my_table_items) {
+		console.log("=== " + i + " ===");
+		console.log("RespCodeDistributor: " + my_table_items[i]['RespCodeDistributor']['S']);
+		console.log("SourceIP: " + my_table_items[i]['SourceIP']['S']);
+		console.log("=========");
+	};
+*/
+//	console.log("");
+//	console.log(JSON.stringify(data.UnprocessedKeys));
+/*
+	if (data.UnprocessedKeys.size > 0) {
+		console.log("unprocessed keys are:");
+		for (i in data.UnprocessedKeys) {
+			console.log(data.UnprocessedKeys[i]);
+		};
+	}
+*/
     }
 });
 </script>
