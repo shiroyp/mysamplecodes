@@ -1,0 +1,44 @@
+<html>
+<head>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.39.min.js"></script>
+<<div id="status"></div>
+<ul id="objects"></ul>
+
+<script type="text/javascript">
+AWS.config.update({accessKeyId: 'XXXXXXXXXXXXX', secretAccessKey: 'XXXXXXXXXXXXXXXXXXXXXXXX'});
+AWS.config.region = 'us-east-1';
+
+
+var dynamodb = new AWS.DynamoDB();
+var params = {
+    RequestItems: { // map of TableName to list of Key to get from each table
+        'TABLENAME': { //change table name here
+            Keys: [
+                    //Here my hash key is RequestID and Range Key is Timestamp
+                    {"RequestID":{"S":"1245"},"Timestamp":{"S":"23062015001"}},
+                    {"RequestID":{"S":"12345"},"Timestamp":{"S":"23062015001"}},
+                    {"RequestID":{"S":"123456"},"Timestamp":{"S":"23062014230001"}}],
+            AttributesToGet: [ // option (attributes to retrieve from this table)
+                'RequestID',
+                'Timestamp',
+                'RespCodeDistributor',
+                'SourceIP',
+            ],
+            ConsistentRead: true, // optional (true | false)
+        },
+        // ... more tables and keys ...
+    },
+    ReturnConsumedCapacity: 'NONE', // optional (NONE | TOTAL | INDEXES)
+};
+dynamodb.batchGetItem(params, function(err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else {
+    console.log(JSON.stringify(data)); //  console.log("table items are:");
+    }
+});
+</script>
+</head>
+<body>
+Sample code to do a get batch item from dynamodb table using javascript sdk
+</body>
+</html>
