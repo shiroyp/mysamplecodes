@@ -11,7 +11,6 @@ parser.add_argument('-f', '--from', default='EUR')
 parser.add_argument('-t', '--to', default='INR')
 parser.add_argument('--version', action='version', version='%(prog)s 1.0')
 args = (vars(parser.parse_args()))
-print (args)
 from_currency = args['from']
 to_currency = args['to']
 
